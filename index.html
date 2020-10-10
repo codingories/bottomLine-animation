@@ -8,10 +8,36 @@
   <title>Document</title>
 </head>
 <body>
+<div class="outWrapper">
+<div>
   <ul>
     <li class="drop-left">DRAG SERIES</li>
     <li class="drop-left">VINCI SERIES</li>
+    <li class="drop-left">ARGUS SERIES</li>
+    <li class="drop-left">V SERIES</li>
+    <li class="drop-left">PNP PLATFORM</li>
   </ul>
+</div>
+<div class="wrapper">
+  <div class="pro-list">
+    <img alt="V.THRU PRO" src="https://i7.voopoo.com/static/dist/uploads/20200916/DRAG-MAX-2.jpg" style="">
+  </div>
+
+
+  <div class="pro-list">
+    <img class="lazy" data-src="https://i1.voopoo.com/static/dist/uploads/20200820/2.jpg" alt="V.THRU PRO" src="https://i4.voopoo.com/static/dist/uploads/20200819/VINCI.jpg" style="">
+  </div>
+  <div class="pro-list">
+    <img class="lazy" data-src="https://i1.voopoo.com/static/dist/uploads/20200820/2.jpg" alt="V.THRU PRO" src="https://i7.voopoo.com/static/dist/uploads/20200819/ARGUS-GT.jpg" style="">
+  </div>
+  <div class="pro-list">
+    <img class="lazy" data-src="https://i1.voopoo.com/static/dist/uploads/20200820/2.jpg" alt="V.THRU PRO" src="https://i1.voopoo.com/static/dist/uploads/20200820/2.jpg" style="">
+  </div>
+  <div class="pro-list">
+    <img class="lazy" data-src="https://i1.voopoo.com/static/dist/uploads/20200820/2.jpg" alt="V.THRU PRO" src="https://i1.voopoo.com/static/dist/uploads/20200727/RTA.png" style="">
+  </div>
+</div>
+</div>
 </body>
 </html>
 <style>
@@ -24,6 +50,9 @@
   }
   body {
     background-color: black;
+  }
+  .outWrapper {
+    display: flex;
   }
   .drop-left {
     display: table;
@@ -49,14 +78,42 @@
     width: 100%;
     background-color: #fed314;
   }
+  .wrapper {
+    margin-left: 200px;
+    width: 400px;
+    height: 400px;
+    position: relative;
+  }
+  .pro-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    transition: .6s ease-out;
+    z-index: 10;
+  }
+  .show {
+    opacity: 1;
+    z-index: 11;
+    display: block;
+  }
 </style>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   let handlerIn = function(){
+    let index = $(this).index()
+    console.log($(this).index())
+    // console.log($(this).parent()[0])
+    $('.pro-list').siblings('div').removeClass('show');
+    // $('.pro-list')[index].addClass('show');
+    // console.log($('.pro-list')[index])
+    $($('.pro-list')[index]).addClass('show');
+    $(this).siblings('li').removeClass('active');
     $(this).addClass('active')
   }
   let handlerOut = function(){
-    $(this).removeClass('active')
+    // $(this).siblings('li').removeClass('active');
   }
   $(".drop-left").hover( handlerIn, handlerOut )
 
