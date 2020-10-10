@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="drop-left">DRAG SERIES</li>
+    <li class="drop-left">VINCI SERIES</li>
+  </ul>
+</body>
+</html>
+<style>
+
+  * {
+    box-sizing:border-box;
+  }
+  li {
+    list-style:none;
+  }
+  body {
+    background-color: black;
+  }
+  .drop-left {
+    display: table;
+    margin-bottom: 34px;
+    font-size: 20px;
+    font-family: Radnika-Bold,serif;
+    line-height: 30px;
+    color: #6f6f6f;
+    position: relative;
+  }
+  .drop-left::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 1px;
+    width: 30px;
+    background-color: #6f6f6f;
+  }
+  .active::after {
+    transition: all 0.25s;
+    width: 100%;
+    background-color: #fed314;
+  }
+</style>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  let handlerIn = function(){
+    $(this).addClass('active')
+  }
+  let handlerOut = function(){
+    $(this).removeClass('active')
+  }
+  $(".drop-left").hover( handlerIn, handlerOut )
+
+</script>
